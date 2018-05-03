@@ -3,21 +3,23 @@ import React, { Component } from 'react';
 
 class ContactItem extends Component {
 
-  showProject(index){
-    console.log(index);
-
-    this.props.onClick(index);
+  showContact(e) {
+    console.log(e)
+    console.log(this , " << contactOb");
+    this.setState({showDetailContact: this.props.contact})
+    console.log(this.state)
+    // this.props.onClick(id);
   }
-  deleteProject(id){
+  deleteContact(id){
     console.log(id);
 
     this.props.onDelete(id);
   }
   render() {
     return (
-     <li key={this.props.contact.index}>
+     <li>
          <b>{this.props.contact.name}</b> - {this.props.contact.city} - {this.props.contact.state}
-         <a href="#" onClick={this.showProject.bind(this, this.props.contact.index)}>X</a>
+         <a href="#" onClick={this.showContact.bind(this, this.props)}>Show Details</a>
          {/* <a href="#" onClick={this.deleteProject.bind(this, this.props.contact.index)}>X</a> */}
      </li>
     );

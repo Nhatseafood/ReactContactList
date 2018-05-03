@@ -8,12 +8,12 @@ class Contacts extends Component {
     let ContactItems;
 
     if(this.props.contacts){
-      ContactItems = this.props.contacts.map( (contact, index) => {
+      ContactItems = this.props.contacts.map( (contact) => {
        
         //console.log(project)
 
           return (
-            <ContactItem key={contact.index} contact={contact} />
+            <ContactItem key={contact.id} contact={contact} />
           )
       })
     }

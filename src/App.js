@@ -5,6 +5,8 @@ import MyForm from './myForm';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
 import Contacts from './components/Contacts';
+import ShowContact from './components/ShowContact'
+import ShowDetail from './components/ShowDetail';
 
 
 class App extends Component {
@@ -12,7 +14,8 @@ class App extends Component {
     constructor(){
         super();
         this.state = {
-            contacts: []
+            contacts: [],
+            showDetailContact: ""
         }
     }
 
@@ -20,21 +23,28 @@ class App extends Component {
 
         this.setState({contacts:[
             {
+                id: 1,
                 name: "Nhat",
                 city: "Houston",
-                state: "Texas"
+                state: "Texas",
+                email: "n@yahoo.com"
             },
             {
+                id: 2,
                 name: "Tiff",
                 city: "Austin",
-                state: "Texas"
+                state: "Texas",
+                email: "t@yahoo.com"
             },
             {
+                id: 3,
                 name: "Jen",
                 city: "Chicago",
-                state: "Texas"
+                state: "Texas",
+                email: "J@yahoo.com"
             }
-          ]})
+          ]}
+        )
 
     }
 
@@ -46,6 +56,23 @@ class App extends Component {
         contacts.push(contact);
         this.setState({contacts:contacts})
     }
+
+    handleShowContacts(contact) {
+        console.log(contact)
+
+        let contacts = this.state.contacts;
+        contacts.push(contact);
+        this.setState({contacts:contacts})
+    }
+
+
+    showDetailContact(contact) {
+        console.log(contact)
+
+        let currentContact = this.state.showDetailContact;
+        this.setState({showDetailContact:currentContact})
+    }
+
 
 
 
@@ -60,6 +87,8 @@ class App extends Component {
                 <h1>YO</h1>
             <Contacts contacts={this.state.contacts} />   
             <MyForm addContact={this.handleAddContacts.bind(this)}/>
+            <ShowDetail detailContact={this.state.showDetailContact} />
+
             
             </div>
         </MuiThemeProvider>
